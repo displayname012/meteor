@@ -34,6 +34,8 @@ import net.minecraft.client.option.Perspective;
 import net.minecraft.client.render.Camera;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ProjectileUtil;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.c2s.play.VehicleMoveC2SPacket;
 import net.minecraft.network.packet.s2c.play.DeathMessageS2CPacket;
 import net.minecraft.network.packet.s2c.play.HealthUpdateS2CPacket;
 import net.minecraft.network.packet.s2c.play.PlayerRespawnS2CPacket;
@@ -102,7 +104,7 @@ public class Freecam extends Module {
     private final Setting<Boolean> reloadChunks = sgGeneral.add(new BoolSetting.Builder()
         .name("reload-chunks")
         .description("Disables cave culling.")
-        .defaultValue(true)
+        .defaultValue(false)
         .build()
     );
 
@@ -116,6 +118,12 @@ public class Freecam extends Module {
     private final Setting<Boolean> rotate = sgGeneral.add(new BoolSetting.Builder()
         .name("rotate")
         .description("Rotates to the block or entity you are looking at.")
+        .defaultValue(false)
+        .build()
+    );
+    private final Setting<Boolean> teleportToFinalPos = sgGeneral.add(new BoolSetting.Builder()
+        .name("teleport")
+        .description("Teleport to position when you exit freecam (disabled if holding CTRL)")
         .defaultValue(false)
         .build()
     );
@@ -203,6 +211,14 @@ public class Freecam extends Module {
     public void onDeactivate() {
         if (reloadChunks.get()) {
             mc.execute(mc.worldRenderer::reload);
+        }
+        if (teleportToFinalPos.get()) {
+            if (!Input.isPressed(mc.options.sprintKey)) {
+                Vec3d camPos = mc.gameRenderer.getCamera().getCameraPos();
+                mc.player.setPos(camPos.x, camPos.y - 1.4, camPos.z);
+                mc.player.updatePosition(camPos.x, camPos.y - 1.4, camPos.z);
+                mc.player.setVelocity(0, 0, 0);
+            }
         }
 
         mc.options.setPerspective(perspective);

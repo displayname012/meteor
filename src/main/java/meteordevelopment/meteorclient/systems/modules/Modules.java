@@ -20,6 +20,9 @@ import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.systems.System;
 import meteordevelopment.meteorclient.systems.Systems;
 import meteordevelopment.meteorclient.systems.config.Config;
+import meteordevelopment.meteorclient.systems.modules.basehunting.AdvancedItemESP;
+import meteordevelopment.meteorclient.systems.modules.basehunting.BaseFinder;
+import meteordevelopment.meteorclient.systems.modules.basehunting.MobGearESP;
 import meteordevelopment.meteorclient.systems.modules.combat.*;
 import meteordevelopment.meteorclient.systems.modules.misc.*;
 import meteordevelopment.meteorclient.systems.modules.misc.swarm.Swarm;
@@ -32,6 +35,8 @@ import meteordevelopment.meteorclient.systems.modules.render.blockesp.BlockESP;
 import meteordevelopment.meteorclient.systems.modules.render.marker.Marker;
 import meteordevelopment.meteorclient.systems.modules.world.*;
 import meteordevelopment.meteorclient.systems.modules.world.Timer;
+import meteordevelopment.meteorclient.systems.modules.Utility.*;
+import meteordevelopment.meteorclient.systems.modules.operator.*;
 import meteordevelopment.meteorclient.utils.Utils;
 import meteordevelopment.meteorclient.utils.misc.Keybind;
 import meteordevelopment.meteorclient.utils.misc.ValueComparableMap;
@@ -78,6 +83,7 @@ public class Modules extends System<Modules> {
         initRender();
         initWorld();
         initMisc();
+        initUtility();
     }
 
     @Override
@@ -579,5 +585,57 @@ public class Modules extends System<Modules> {
         add(new SoundBlocker());
         add(new Spam());
         add(new Swarm());
+    }
+    private void initUtility() {
+        add(new AutoSwitchTool());
+        add(new AutoWaterBucket());
+        add(new NoPause());
+        add(new InfiniteReach());
+        add(new AdvancedItemESP());
+        add(new AimBot());
+        add(new AirstrikePlus());
+        add(new AttributeSwap());
+        add(new AutoCommand());
+        add(new AutoDisplays());
+        add(new AutoDrop());
+        add(new AutoNames());
+        add(new AutoTexts());
+        add(new AutoTnt());
+        add(new AutoTitles());
+        add(new AutoWither());
+        add(new BaseFinder());
+        add(new BetterAutoSign());
+        add(new BetterScaffold());
+        add(new BlockListMineCommand());
+        add(new BoatKill());
+        add(new BoatNoclip());
+        add(new BookAndQuillDupe());
+        add(new BoomPlus());
+        add(new ExplosionAura());
+        add(new FlightAntikick());
+        add(new ForceOPBook());
+        add(new ForceOPSign());
+        add(new HandOfGod());
+        add(new InfiniteReach());
+        add(new InfiniteTools());
+        add(new InstaMineNuker());
+        add(new InstaSafetyBox());
+        add(new ItemTractorBeam());
+        add(new TPAura());
+        add(new MaceKill());
+        add(new MobGearESP());
+        add(new MultiUse());
+        add(new MultiverseAnnihilator());
+        add(new NbtEditor());
+        add(new OPplayerTPmodule());
+        add(new OPServerKillModule());
+        add(new PortalGodMode());
+        add(new RedstoneNuker());
+        add(new ShulkerDupe());
+        add(new StorageLooter());
+        add(new Teleport());
+        add(new TrailMaker());
+        add(new VoiderPlus());
+        add(new ElytraNoclip());
     }
 }

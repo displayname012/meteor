@@ -16,6 +16,9 @@ public class Categories {
     public static final Category Render = new Category("Render", Items.GLASS.getDefaultStack());
     public static final Category World = new Category("World", Items.GRASS_BLOCK.getDefaultStack());
     public static final Category Misc = new Category("Misc", Items.LAVA_BUCKET.getDefaultStack());
+    public static final Category Utility = new Category("Utility", Items.BEDROCK.getDefaultStack());
+    public static final Category BaseHunting = new Category("Base-hunting", Items.SPYGLASS.getDefaultStack());
+    public static final Category Operator = new Category("Creative/OP-only", Items.NETHER_STAR.getDefaultStack());
 
     public static boolean REGISTERING;
 
@@ -29,6 +32,9 @@ public class Categories {
         Modules.registerCategory(Render);
         Modules.registerCategory(World);
         Modules.registerCategory(Misc);
+        Modules.registerCategory(Utility);
+        Modules.registerCategory(BaseHunting);
+        Modules.registerCategory(Operator);
 
         // Addons
         AddonManager.ADDONS.forEach(MeteorAddon::onRegisterCategories);

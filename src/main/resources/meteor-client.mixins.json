@@ -198,7 +198,13 @@
     "WorldChunkMixin",
     "WorldRendererAccessor",
     "WorldRendererMixin",
-    "YggdrasilMinecraftSessionServiceAccessor"
+    "YggdrasilMinecraftSessionServiceAccessor",
+    "ClientPlayerInteractionManagerMixin",
+    "PlayerEntityMixin",
+    "ScreenMixin",
+    "HandledScreenMixin",
+    "AbstractBlockMixin",
+    "AbstractBoatEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
